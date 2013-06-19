@@ -4,11 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using SFML.Graphics;
 
 namespace SqEng.Internal.Animation
 {
     public class Frame : GameObject
     {
+        public string TileSheet;
+
         public int X, Y, W, H;
 
         public Frame(string path) : base(path)
@@ -26,14 +29,43 @@ namespace SqEng.Internal.Animation
 
         #region OverRides
 
+        public override Sprite Sprite
+        {
+            get
+            {
+                return Resources.Tilesheets[TileSheet];
+            }
+        }
+
         public override void LoadXmlDoc(XmlDocument x)
         {
-            
+            foreach (XmlNode n in x)
+            {
+                string val = n.InnerText.Trim();
+                switch (n.Name)
+                {
+                    case "x":
+                        X = Convert.ToInt32(val);
+                        break;
+                    case "y":
+                        Y = Convert.ToInt32(val);
+                        break;
+                    case "w":
+                        W = Convert.ToInt32(val);
+                        break;
+                    case "h":
+                        H = Convert.ToInt32(val);
+                        break;
+                    case "tilesheet":
+                        TileSheet = val;
+                        break;
+                }
+            }
         }
 
         public override string TypePath
         {
-            get { return "frame"; }
+            get { return "frames"; }
         }
 
         public override string ToXml()

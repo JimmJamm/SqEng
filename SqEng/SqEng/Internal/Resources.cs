@@ -5,15 +5,33 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.IO;
+using SFML.Graphics;
 
 namespace SqEng.Internal
 {
     public static class Resources
     {
+        private static Dictionary<string, Sprite> tilesheets;
+        public static Dictionary<string, Sprite> Tilesheets
+        {
+            get
+            {
+                if (tilesheets == null)
+                {
+                    tilesheets = new Dictionary<string, Sprite>();
+                    foreach (FileInfo fi in (new DirectoryInfo("data/tilesheets")).GetFiles())
+                    {
+                        tilesheets[fi.Name] = new Sprite(new Texture(new Image(fi.FullName)));
+                    }
+                }
+                return tilesheets;
+            }
+        }
+
         public static XmlDocument GetXml(string path)
         {
             XmlDocument x = new XmlDocument();
-            x.LoadXml(File.ReadAllText("data/" + path + "data.xml"));
+            x.LoadXml(File.ReadAllText("data/" + path + "/data.xml"));
             return x;
         }
     }

@@ -5,25 +5,28 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.IO;
+using SFML.Graphics;
 
 namespace SqEng.Internal
 {
     public abstract class GameObject
     {
         public abstract string TypePath { get; }
+        public abstract Sprite @Sprite { get; }
         public abstract string ToXml();
         public abstract void LoadXmlDoc(XmlDocument x);
+        public XmlDocument InitialXmlDoc;
         public GameObject(string path)
         {
-            XmlDocument x = Resources.GetXml(Path.Combine(TypePath, path));
-            foreach (XmlNode n in x)
+            InitialXmlDoc = Resources.GetXml(Path.Combine(TypePath, path));
+            foreach (XmlNode n in InitialXmlDoc)
             {
                 if (n.Name == "base")
                 {
                     LoadXmlDoc(Resources.GetXml(n.InnerText.Trim()));
                 }
             }
-            LoadXmlDoc(x);
+            LoadXmlDoc(InitialXmlDoc);
         }
         public GameObject(){}
     }

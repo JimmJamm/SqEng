@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqEng", "SqEng\SqEng.csproj", "{9C779592-B826-49E9-BAF8-3F225BBB2230}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqTest", "SqTest\SqTest.csproj", "{DC61C558-B986-4794-AB79-8085A3618B5C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqDev", "SqDev\SqDev.csproj", "{DC61C558-B986-4794-AB79-8085A3618B5C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
