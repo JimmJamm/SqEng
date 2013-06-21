@@ -65,6 +65,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrameSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrameSelector.Designer.cs">
+      <DependentUpon>FrameSelector.cs</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,6 +85,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrameSelector.resx">
+      <DependentUpon>FrameSelector.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Startup.resx">
       <DependentUpon>Startup.cs</DependentUpon>
     </EmbeddedResource>

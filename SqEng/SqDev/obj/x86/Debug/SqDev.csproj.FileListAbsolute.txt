@@ -18,3 +18,4 @@ C:\Users\user\Dropbox\git\SqEng\SqEng\SqDev\bin\x86\Debug\sfmlnet-window-2.dll
 C:\Users\user\Dropbox\git\SqEng\SqEng\SqDev\bin\x86\Debug\SqEng.pdb
 C:\Users\user\Dropbox\git\SqEng\SqEng\SqDev\obj\x86\Debug\SqDev.exe
 C:\Users\user\Dropbox\git\SqEng\SqEng\SqDev\obj\x86\Debug\SqDev.pdb
+C:\Users\user\Dropbox\git\SqEng\SqEng\SqDev\obj\x86\Debug\SqDev.FrameSelector.resources

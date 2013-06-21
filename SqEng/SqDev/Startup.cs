@@ -24,7 +24,7 @@ namespace SqDev
 
         private void btnFrameEditor_Click(object sender, EventArgs e)
         {
-            (new FrameEditor()).Show();
+            (new FrameSelector()).Show();
         }
     }
 }

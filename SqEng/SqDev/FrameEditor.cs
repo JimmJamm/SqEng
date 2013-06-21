@@ -15,98 +15,105 @@ namespace SqDev
 {
     public partial class FrameEditor : Form
     {
-        
-        private List<Image> tilesheets;
-        public List<Image> Tilesheets
+        public void FrameToControls()
+        {
+            txtW.Text = frame.W.ToString();
+            txtH.Text = frame.H.ToString();
+            txtX.Text = frame.X.ToString();
+            txtY.Text = frame.Y.ToString();
+        }
+
+        public void ControlsToFrame()
+        {
+            try
+            {
+                frame.X = Convert.ToInt32(txtX.Text);
+                frame.Y = Convert.ToInt32(txtY.Text);
+                frame.W = Convert.ToInt32(txtW.Text);
+                frame.H = Convert.ToInt32(txtH.Text);
+            }
+            catch (Exception ex)
+            {
+                //get rid of annoying warning
+                (ex.Message).ToString();
+                MessageBox.Show("Invalid value entered.");
+            }
+        }
+
+        private Frame frame;
+        public Frame Frame
+        {
+            get
+            {
+                return frame;
+            }
+            set
+            {
+                frame = value;
+                RefreshItems();
+            }
+        }
+
+        private Dictionary<string, Image> tilesheets;
+        public Dictionary<string, Image> TileSheets
         {
             get
             {
                 if (tilesheets == null)
-                {
                     RefreshItems();
-                }
                 return tilesheets;
             }
         }
 
-        private List<Frame> frames;
-        public List<Frame> Frames
-        {
-            get
-            {
-                if (frames == null)
-                    RefreshItems();
-                return frames;
-            }
-        }
-
-        public Frame CurrentFrame;
 
         public FrameEditor()
         {
             InitializeComponent();
         }
 
-        private void newToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Frame f = new Frame();
-            string name = Microsoft.VisualBasic.Interaction.InputBox("Name: ");
-            try { System.IO.Directory.CreateDirectory("data/frames/" + name); }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return;
-            }
-            File.WriteAllText("data/frames/" + name + "/data.xml", f.ToXml());
-            Refresh();
-        }
-
-        //do not use
-        private void discardChangesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void discardChangesToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
         private void RefreshItems()
         {
-            if (!Directory.Exists("data/frames"))
-            {
-                Directory.CreateDirectory("data/frames");
-                MessageBox.Show("Folder data/frames did not exist at instantiation. It has now been created.");
-            }
-
-            tilesheets = new List<Image>();
+            tilesheets = new Dictionary<string, Image>();
             lboTilesheets.Items.Clear();
             foreach (FileInfo fi in (new DirectoryInfo("data/tilesheets")).GetFiles())
             {
-                tilesheets.Add(new Bitmap(fi.FullName));
+                tilesheets[fi.Name] = new Bitmap(fi.FullName);
                 lboTilesheets.Items.Add(fi.Name);
             }
-
-            frames = new List<Frame>();
-            lboFrames.Items.Clear();
-            foreach (DirectoryInfo di in (new DirectoryInfo("data/frames")).GetDirectories())
-            {
-                frames.Add(new Frame(di.Name));
-                lboFrames.Items.Add(di.Name);
-            }
-
+            FrameToControls();
             
-        }
-
-        private void duplicateToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void FrameEditor_Load(object sender, EventArgs e)
         {
-            RefreshItems();
+
+        }
+
+        int mouseX, mouseY;
+
+        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (@MouseButtons == MouseButtons.Left)
+            {
+                
+            }
+            if (@MouseButtons == MouseButtons.Right)
+            {
+
+            }
+        }
+
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseX = e.X;
+            mouseY = e.Y;
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            ControlsToFrame();
+            File.WriteAllText("data/frames/" + frame.Name + "/data.xml", frame.ToXml());
+            MessageBox.Show("Saved.");
         }
     }
 }

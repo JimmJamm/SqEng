@@ -39,7 +39,7 @@ namespace SqEng.Internal.Animation
 
         public override void LoadXmlDoc(XmlDocument x)
         {
-            foreach (XmlNode n in x)
+            foreach (XmlNode n in x.DocumentElement.ChildNodes)
             {
                 string val = n.InnerText.Trim();
                 switch (n.Name)

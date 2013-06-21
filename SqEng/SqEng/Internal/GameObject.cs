@@ -16,9 +16,11 @@ namespace SqEng.Internal
         public abstract string ToXml();
         public abstract void LoadXmlDoc(XmlDocument x);
         public XmlDocument InitialXmlDoc;
-        public GameObject(string path)
+        public string Name;
+        public GameObject(string name)
         {
-            InitialXmlDoc = Resources.GetXml(Path.Combine(TypePath, path));
+            Name = name;
+            InitialXmlDoc = Resources.GetXml(Path.Combine(TypePath, name));
             foreach (XmlNode n in InitialXmlDoc)
             {
                 if (n.Name == "base")

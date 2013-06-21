@@ -28,108 +28,90 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lboFrames = new System.Windows.Forms.ListBox();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.duplicateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.discardChangesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lboTilesheets = new System.Windows.Forms.ListBox();
-            this.menuStrip1.SuspendLayout();
+            this.pboFull = new System.Windows.Forms.PictureBox();
+            this.txtX = new System.Windows.Forms.TextBox();
+            this.txtY = new System.Windows.Forms.TextBox();
+            this.txtH = new System.Windows.Forms.TextBox();
+            this.txtW = new System.Windows.Forms.TextBox();
+            this.btnSave = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.pboFull)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lboFrames
-            // 
-            this.lboFrames.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lboFrames.FormattingEnabled = true;
-            this.lboFrames.Location = new System.Drawing.Point(752, 15);
-            this.lboFrames.Name = "lboFrames";
-            this.lboFrames.Size = new System.Drawing.Size(150, 498);
-            this.lboFrames.TabIndex = 0;
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.editToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(914, 24);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // fileToolStripMenuItem
-            // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newToolStripMenuItem,
-            this.duplicateToolStripMenuItem,
-            this.saveToolStripMenuItem});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.fileToolStripMenuItem.Text = "File";
-            // 
-            // newToolStripMenuItem
-            // 
-            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.newToolStripMenuItem.Text = "New";
-            this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
-            // 
-            // duplicateToolStripMenuItem
-            // 
-            this.duplicateToolStripMenuItem.Name = "duplicateToolStripMenuItem";
-            this.duplicateToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.duplicateToolStripMenuItem.Text = "Duplicate";
-            this.duplicateToolStripMenuItem.Click += new System.EventHandler(this.duplicateToolStripMenuItem_Click);
-            // 
-            // saveToolStripMenuItem
-            // 
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.saveToolStripMenuItem.Text = "Save";
-            // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.discardChangesToolStripMenuItem});
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
-            this.editToolStripMenuItem.Text = "Edit";
-            // 
-            // discardChangesToolStripMenuItem
-            // 
-            this.discardChangesToolStripMenuItem.Name = "discardChangesToolStripMenuItem";
-            this.discardChangesToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
-            this.discardChangesToolStripMenuItem.Text = "Discard Changes";
-            this.discardChangesToolStripMenuItem.Click += new System.EventHandler(this.discardChangesToolStripMenuItem_Click_1);
             // 
             // lboTilesheets
             // 
             this.lboTilesheets.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lboTilesheets.FormattingEnabled = true;
-            this.lboTilesheets.Location = new System.Drawing.Point(596, 15);
+            this.lboTilesheets.Location = new System.Drawing.Point(752, 54);
             this.lboTilesheets.Name = "lboTilesheets";
-            this.lboTilesheets.Size = new System.Drawing.Size(150, 498);
+            this.lboTilesheets.Size = new System.Drawing.Size(150, 459);
             this.lboTilesheets.TabIndex = 2;
+            // 
+            // pboFull
+            // 
+            this.pboFull.Location = new System.Drawing.Point(13, 142);
+            this.pboFull.Name = "pboFull";
+            this.pboFull.Size = new System.Drawing.Size(733, 371);
+            this.pboFull.TabIndex = 3;
+            this.pboFull.TabStop = false;
+            this.pboFull.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
+            this.pboFull.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
+            // 
+            // txtX
+            // 
+            this.txtX.Location = new System.Drawing.Point(13, 15);
+            this.txtX.Name = "txtX";
+            this.txtX.Size = new System.Drawing.Size(99, 20);
+            this.txtX.TabIndex = 4;
+            // 
+            // txtY
+            // 
+            this.txtY.Location = new System.Drawing.Point(13, 41);
+            this.txtY.Name = "txtY";
+            this.txtY.Size = new System.Drawing.Size(99, 20);
+            this.txtY.TabIndex = 5;
+            // 
+            // txtH
+            // 
+            this.txtH.Location = new System.Drawing.Point(13, 93);
+            this.txtH.Name = "txtH";
+            this.txtH.Size = new System.Drawing.Size(99, 20);
+            this.txtH.TabIndex = 7;
+            // 
+            // txtW
+            // 
+            this.txtW.Location = new System.Drawing.Point(13, 67);
+            this.txtW.Name = "txtW";
+            this.txtW.Size = new System.Drawing.Size(99, 20);
+            this.txtW.TabIndex = 6;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(752, 12);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(150, 23);
+            this.btnSave.TabIndex = 8;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // FrameEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(914, 530);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.txtH);
+            this.Controls.Add(this.txtW);
+            this.Controls.Add(this.txtY);
+            this.Controls.Add(this.txtX);
+            this.Controls.Add(this.pboFull);
             this.Controls.Add(this.lboTilesheets);
-            this.Controls.Add(this.lboFrames);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrameEditor";
             this.Text = "FrameEditor";
             this.Load += new System.EventHandler(this.FrameEditor_Load);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pboFull)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -137,14 +119,12 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox lboFrames;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem discardChangesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem duplicateToolStripMenuItem;
         private System.Windows.Forms.ListBox lboTilesheets;
+        private System.Windows.Forms.PictureBox pboFull;
+        private System.Windows.Forms.TextBox txtX;
+        private System.Windows.Forms.TextBox txtY;
+        private System.Windows.Forms.TextBox txtH;
+        private System.Windows.Forms.TextBox txtW;
+        private System.Windows.Forms.Button btnSave;
     }
 }
