@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lboTilesheets = new System.Windows.Forms.ListBox();
             this.pboFull = new System.Windows.Forms.PictureBox();
             this.txtX = new System.Windows.Forms.TextBox();
@@ -35,6 +36,13 @@
             this.txtH = new System.Windows.Forms.TextBox();
             this.txtW = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
+            this.tmrDraw = new System.Windows.Forms.Timer(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtSnap = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pboFull)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,6 +55,7 @@
             this.lboTilesheets.Name = "lboTilesheets";
             this.lboTilesheets.Size = new System.Drawing.Size(150, 459);
             this.lboTilesheets.TabIndex = 2;
+            this.lboTilesheets.DoubleClick += new System.EventHandler(this.lboTilesheets_DoubleClick);
             // 
             // pboFull
             // 
@@ -55,6 +64,7 @@
             this.pboFull.Size = new System.Drawing.Size(733, 371);
             this.pboFull.TabIndex = 3;
             this.pboFull.TabStop = false;
+            this.pboFull.Paint += new System.Windows.Forms.PaintEventHandler(this.pboFull_Paint);
             this.pboFull.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
             this.pboFull.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
             // 
@@ -64,6 +74,7 @@
             this.txtX.Name = "txtX";
             this.txtX.Size = new System.Drawing.Size(99, 20);
             this.txtX.TabIndex = 4;
+            this.txtX.TextChanged += new System.EventHandler(this.txt_TextChanged);
             // 
             // txtY
             // 
@@ -71,6 +82,7 @@
             this.txtY.Name = "txtY";
             this.txtY.Size = new System.Drawing.Size(99, 20);
             this.txtY.TabIndex = 5;
+            this.txtY.TextChanged += new System.EventHandler(this.txt_TextChanged);
             // 
             // txtH
             // 
@@ -78,6 +90,7 @@
             this.txtH.Name = "txtH";
             this.txtH.Size = new System.Drawing.Size(99, 20);
             this.txtH.TabIndex = 7;
+            this.txtH.TextChanged += new System.EventHandler(this.txt_TextChanged);
             // 
             // txtW
             // 
@@ -85,6 +98,7 @@
             this.txtW.Name = "txtW";
             this.txtW.Size = new System.Drawing.Size(99, 20);
             this.txtW.TabIndex = 6;
+            this.txtW.TextChanged += new System.EventHandler(this.txt_TextChanged);
             // 
             // btnSave
             // 
@@ -96,11 +110,76 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // tmrDraw
+            // 
+            this.tmrDraw.Enabled = true;
+            this.tmrDraw.Interval = 300;
+            this.tmrDraw.Tick += new System.EventHandler(this.tmrDraw_Tick);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(119, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(14, 13);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "X";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(119, 41);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(14, 13);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Y";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(118, 96);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(15, 13);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "H";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(119, 70);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(18, 13);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "W";
+            // 
+            // txtSnap
+            // 
+            this.txtSnap.Location = new System.Drawing.Point(359, 34);
+            this.txtSnap.Name = "txtSnap";
+            this.txtSnap.Size = new System.Drawing.Size(99, 20);
+            this.txtSnap.TabIndex = 13;
+            this.txtSnap.Text = "16";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(356, 14);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(35, 13);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "Snap:";
+            // 
             // FrameEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(914, 530);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.txtSnap);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtH);
             this.Controls.Add(this.txtW);
@@ -126,5 +205,12 @@
         private System.Windows.Forms.TextBox txtH;
         private System.Windows.Forms.TextBox txtW;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Timer tmrDraw;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtSnap;
+        private System.Windows.Forms.Label label5;
     }
 }
