@@ -17,15 +17,16 @@ namespace SqEng.Internal
         public abstract void LoadXmlDoc(XmlDocument x);
         public XmlDocument InitialXmlDoc;
         public string Name;
+        public float Rate = 1.0f;
         public GameObject(string name)
         {
             Name = name;
-            InitialXmlDoc = Resources.GetXml(Path.Combine(TypePath, name));
+            InitialXmlDoc = StaticResources.GetXml(Path.Combine(TypePath, name));
             foreach (XmlNode n in InitialXmlDoc)
             {
                 if (n.Name == "base")
                 {
-                    LoadXmlDoc(Resources.GetXml(n.InnerText.Trim()));
+                    LoadXmlDoc(StaticResources.GetXml(n.InnerText.Trim()));
                 }
             }
             LoadXmlDoc(InitialXmlDoc);

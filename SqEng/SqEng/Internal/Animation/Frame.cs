@@ -10,11 +10,17 @@ namespace SqEng.Internal.Animation
 {
     public class Frame : GameObject
     {
+        #region serialized
         public string TileSheet;
 
         public int X, Y, W, H;
 
-        public Frame(string path) : base(path)
+        #endregion
+
+        #region override
+
+        public Frame(string path) 
+            : base(path)
         {
 
         }
@@ -27,13 +33,11 @@ namespace SqEng.Internal.Animation
             H = h;
         }
 
-        #region OverRides
-
         public override Sprite Sprite
         {
             get
             {
-                return Resources.Tilesheets[TileSheet];
+                return StaticResources.Tilesheets[TileSheet];
             }
         }
 
@@ -76,6 +80,7 @@ namespace SqEng.Internal.Animation
                 "<y>" + Y + "</y>" +
                 "<w>" + W + "</w>" +
                 "<h>" + H + "</h>" +
+                (TileSheet == null ? "" : "<tilesheet>" + TileSheet + "</tilesheet>") +
                 "</frame>";
              
         }

@@ -7,45 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 using System.IO;
 using SqEng.Internal.Animation;
-using Microsoft.VisualBasic;
 
 namespace SqDev
 {
+
     public partial class FrameEditor : Form
     {
-        public int Snap
+        public FrameEditor(string frameName)
         {
-            get
-            {
-                try
-                {
-                    return Convert.ToInt32(txtSnap.Text);
-                }
-                catch (Exception)
-                {
-                    return 8;
-                }
-            }
+            frame = new Frame(frameName);
+            InitializeComponent();
         }
 
-        public void FrameToControls()
-        {
-            txtW.Text = frame.W.ToString();
-            txtH.Text = frame.H.ToString();
-            txtX.Text = frame.X.ToString();
-            txtY.Text = frame.Y.ToString();
-            pboFull.Invalidate();
-        }
-
-        public void ControlsToFrame()
-        {
-            frame.X = Convert.ToInt32(txtX.Text);
-            frame.Y = Convert.ToInt32(txtY.Text);
-            frame.W = Convert.ToInt32(txtW.Text);
-            frame.H = Convert.ToInt32(txtH.Text);
-        }
+        #region Variables
 
         private Frame frame;
         public Frame Frame
@@ -57,93 +34,135 @@ namespace SqDev
             set
             {
                 frame = value;
-                RefreshItems();
             }
         }
 
-        private Dictionary<string, Image> tilesheets;
-        public Dictionary<string, Image> TileSheets
+        public Bitmap TileSheet;
+        public Point TSOffset = new Point(0, 0);
+
+        public Graphics pnlBuffer;
+        public Bitmap pnlBmp;
+
+        public Point PtMouseDown = new Point();
+
+        public int Snap
         {
             get
             {
-                if (tilesheets == null)
-                    RefreshItems();
-                return tilesheets;
+                try
+                {
+                    return Convert.ToInt32(txtSnap.Text);
+                }
+                catch (Exception)
+                {
+                    txtSnap.Text = "16";
+                    return Snap;
+                }
             }
         }
 
+        public Pen RectPen = new Pen(Brushes.Green, 2.0f);
+        public int counter;
+        #endregion
 
-        public FrameEditor()
+        public void FrameToControls()
         {
-            InitializeComponent();
-        }
+            txtX.Text = frame.X.ToString();
+            txtY.Text = frame.Y.ToString();
+            txtW.Text = frame.W.ToString();
+            txtH.Text = frame.H.ToString();
 
-        private void RefreshItems()
-        {
-            tilesheets = new Dictionary<string, Image>();
-            lboTilesheets.Items.Clear();
-            foreach (FileInfo fi in (new DirectoryInfo("data/tilesheets")).GetFiles())
-            {
-                tilesheets[fi.Name] = new Bitmap(fi.FullName);
-                lboTilesheets.Items.Add(fi.Name);
-            }
-            FrameToControls();
             if (frame.TileSheet != null)
             {
-                pboFull.Image = new Bitmap("data/tilesheets/" + frame.TileSheet);
+                TileSheet = new Bitmap("data/tilesheets/" + frame.TileSheet);
             }
+
+            pnlTileSheet.Invalidate();
         }
 
         private void FrameEditor_Load(object sender, EventArgs e)
         {
+            this.SetStyle(
+                ControlStyles.OptimizedDoubleBuffer,
+                true
+            );
 
-        }
-
-        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (@MouseButtons == MouseButtons.Left)
-            {
-                frame.W = e.X - frame.X;
-                frame.H = e.Y - frame.Y;
-                FrameToControls();
-            }
-            if (@MouseButtons == MouseButtons.Right)
-            {
-                
-            }
-        }
-
-        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
-        {
-            frame.X = e.X;
-            frame.Y = e.Y;
-
-            this.Text = e.X + " " + e.Y;
-
-            //Extremely bizarre behavior. If I try to use frame.X and frame.Y from the picture box's paint method, I get the correct X but old Y.
-            //So I'm just using this for now since it works but the frame object doesn't. 
-            xtest = frame.X;
-            ytest = frame.Y;
-
-            xtest = ((int)(xtest/Snap)) * Snap;
-            ytest = ((int)(xtest/Snap)) * Snap;
+            pnlBmp = new Bitmap(pnlTileSheet.Width, pnlTileSheet.Height);
+            pnlBuffer = Graphics.FromImage(pnlBmp);
 
             FrameToControls();
+
+            foreach (FileInfo fi in (new DirectoryInfo("data/tilesheets")).GetFiles())
+            {
+                lboTilesheets.Items.Add(fi.Name);
+            }
+
+            FrameToControls();
+
+            pnlTileSheet.Invalidate();
         }
 
-        int xtest, ytest;
-
-        private void btnSave_Click(object sender, EventArgs e)
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
-            try
+            //base.OnPaint(e);
+            if (TileSheet != null)
             {
-                ControlsToFrame();
-                File.WriteAllText("data/frames/" + frame.Name + "/data.xml", frame.ToXml());
-                MessageBox.Show("Saved.");
+                pnlBuffer.FillRectangle(Brushes.Green, 0, 0, pnlTileSheet.Width, pnlTileSheet.Height);
+                pnlBuffer.DrawImage(TileSheet, TSOffset);
+                pnlBuffer.DrawRectangle(
+                    RectPen,
+                    new Rectangle(
+                        TSOffset.X + frame.X,
+                        TSOffset.Y + frame.Y,
+                        frame.W, frame.H
+                    )
+                );
+
+                e.Graphics.DrawImage(pnlBmp, new Point(0, 0));
             }
-            catch (Exception ex)
+            else
+                Text = "nulll";
+        }
+
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            float pctX = ((float)e.X) / pnlTileSheet.Width;
+            float pxtY = ((float)e.Y) / pnlTileSheet.Height;
+
+            if (@MouseButtons == MouseButtons.Left)
             {
-                MessageBox.Show(ex.Message);
+                frame.W = (e.X - PtMouseDown.X)/Snap * Snap;
+                frame.H = (e.Y - PtMouseDown.Y) / Snap * Snap;
+            }
+
+            if (@MouseButtons == MouseButtons.Right)
+            {
+                TSOffset.X = -(int)((pctX) * pnlBmp.Width);
+                TSOffset.Y = -(int)((pxtY) * pnlBmp.Height);
+            }
+
+            FrameToControls();
+
+            pnlTileSheet.Invalidate();
+        }
+
+        private void pnlTileSheet_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            {
+                frame.X = (e.X - TSOffset.X) / Snap * Snap;
+                frame.Y = (e.Y - TSOffset.Y) / Snap * Snap;
+
+                PtMouseDown = new Point(e.X, e.Y);
+            }
+        }
+
+        private void tmrUpdateBrush_Tick(object sender, EventArgs e)
+        {
+            unchecked
+            {
+                RectPen = new Pen(Color.FromArgb(counter % 255, (counter / 2) % 255, (counter / 4) % 255), 2.0f);
+                counter++;
             }
         }
 
@@ -152,41 +171,37 @@ namespace SqDev
             if (lboTilesheets.SelectedItem != null)
             {
                 frame.TileSheet = lboTilesheets.SelectedItem.ToString();
-            }
-            RefreshItems();
-        }
-        public Graphics gfx;
-        private void tmrDraw_Tick(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pboFull_Paint(object sender, PaintEventArgs e)
-        {
-            if (pboFull.Image != null &&
-                frame != null &&
-                frame.W > 0 &&
-                frame.H > 0
-            )
-            {
-                gfx = e.Graphics;
-                Text = new Point(xtest, ytest).ToString();
-                gfx.DrawRectangle(
-                    new Pen(Brushes.GreenYellow, 2.0f), 
-                    new Rectangle(new Point(xtest, ytest), new Size(frame.W, frame.H))
-                );
+                FrameToControls();
             }
         }
 
-        private void txt_TextChanged(object sender, EventArgs e)
+        private void btnSave_Click(object sender, EventArgs e)
         {
-            try
+            File.WriteAllText("data/frames/" + frame.Name + " /data.xml", frame.ToXml());
+        }
+
+        private void pnlTileSheet_Resize(object sender, EventArgs e)
+        {
+            if (pnlBuffer != null)
+                pnlBuffer.Dispose();
+            if (pnlTileSheet.Width > 0 && pnlTileSheet.Height > 0)
             {
-                ControlsToFrame();
-            }
-            catch (Exception)
-            {
+                pnlBmp = new Bitmap(pnlTileSheet.Width, pnlTileSheet.Height);
+                pnlBuffer = Graphics.FromImage(pnlBmp);
             }
         }
     }
+
+    public class MyPanel : System.Windows.Forms.Panel
+    {
+        public MyPanel()
+        {
+            this.SetStyle(
+                System.Windows.Forms.ControlStyles.UserPaint |
+                System.Windows.Forms.ControlStyles.AllPaintingInWmPaint |
+                System.Windows.Forms.ControlStyles.OptimizedDoubleBuffer,
+                true);
+        }
+    }
+
 }

@@ -63,7 +63,16 @@ namespace SqDev
 
         private void lboFrames_DoubleClick(object sender, EventArgs e)
         {
-            (new FrameEditor() { Frame = new Frame(lboFrames.SelectedItem.ToString()) }).Show();
+            (new FrameEditor(lboFrames.SelectedItem.ToString())).Show();
+        }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            string name = Microsoft.VisualBasic.Interaction.InputBox("Name:");
+            Frame tmpFrame = new Frame();
+            Directory.CreateDirectory("data/frames/" + name);
+            File.WriteAllText("data/frames/" + name + "/data.xml", tmpFrame.ToXml());
+            RefreshItems();
         }
     }
 }

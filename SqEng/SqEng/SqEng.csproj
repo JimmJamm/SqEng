@@ -70,10 +70,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Internal\Animation\Animation.cs" />
     <Compile Include="Internal\Animation\Frame.cs" />
     <Compile Include="Internal\GameObject.cs" />
     <Compile Include="Internal\Helpers.cs" />
-    <Compile Include="Internal\Resources.cs" />
+    <Compile Include="Internal\StaticResources.cs" />
     <Compile Include="Internal\Scripting\OpCode.cs" />
     <Compile Include="Internal\Scripting\Statement.cs" />
     <Compile Include="Internal\Scripting\Variable.cs" />

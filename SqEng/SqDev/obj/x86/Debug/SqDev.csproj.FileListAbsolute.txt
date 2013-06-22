@@ -1,7 +1,6 @@
 C:\Users\user\Dropbox\git\SqEng\SqEng\SqTest\bin\x86\Debug\SqDev.exe.config
 C:\Users\user\Dropbox\git\SqEng\SqEng\SqDev\bin\x86\Debug\SqDev.exe.config
 C:\Users\user\Dropbox\git\SqEng\SqEng\SqDev\obj\x86\Debug\SqDev.csprojResolveAssemblyReference.cache
-C:\Users\user\Dropbox\git\SqEng\SqEng\SqDev\obj\x86\Debug\SqDev.FrameEditor.resources
 C:\Users\user\Dropbox\git\SqEng\SqEng\SqDev\obj\x86\Debug\SqDev.Properties.Resources.resources
 C:\Users\user\Dropbox\git\SqEng\SqEng\SqDev\obj\x86\Debug\SqDev.csproj.GenerateResource.Cache
 C:\Users\user\Dropbox\git\SqEng\SqEng\SqDev\obj\x86\Debug\SqDev.Startup.resources
@@ -19,3 +18,6 @@ C:\Users\user\Dropbox\git\SqEng\SqEng\SqDev\bin\x86\Debug\SqEng.pdb
 C:\Users\user\Dropbox\git\SqEng\SqEng\SqDev\obj\x86\Debug\SqDev.exe
 C:\Users\user\Dropbox\git\SqEng\SqEng\SqDev\obj\x86\Debug\SqDev.pdb
 C:\Users\user\Dropbox\git\SqEng\SqEng\SqDev\obj\x86\Debug\SqDev.FrameSelector.resources
+C:\Users\user\dropbox\git\SqEng\SqEng\SqDev\obj\x86\Debug\SqDev.FrameEditor.resources
+C:\Users\user\dropbox\git\SqEng\SqEng\SqDev\obj\x86\Debug\SqDev.AnimationEditor.resources
+C:\Users\user\dropbox\git\SqEng\SqEng\SqDev\obj\x86\Debug\SqDev.AnimationSelector.resources

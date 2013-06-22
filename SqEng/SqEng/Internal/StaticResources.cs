@@ -9,7 +9,7 @@ using SFML.Graphics;
 
 namespace SqEng.Internal
 {
-    public static class Resources
+    public static class StaticResources
     {
         private static Dictionary<string, Sprite> tilesheets;
         public static Dictionary<string, Sprite> Tilesheets
