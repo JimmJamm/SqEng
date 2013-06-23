@@ -42,7 +42,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtSnap = new System.Windows.Forms.TextBox();
             this.tmrUpdateBrush = new System.Windows.Forms.Timer(this.components);
-            this.pnlTileSheet = new SqDev.MyPanel();
+            this.pnlTileSheet = new SqDev.DrawPanel();
             this.SuspendLayout();
             // 
             // lboTilesheets
@@ -206,7 +206,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private MyPanel pnlTileSheet;
+        private DrawPanel pnlTileSheet;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtSnap;

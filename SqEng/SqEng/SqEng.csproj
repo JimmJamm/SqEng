@@ -71,9 +71,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Internal\Animation\Animation.cs" />
+    <Compile Include="Internal\Animation\AnimationGroup.cs" />
     <Compile Include="Internal\Animation\Frame.cs" />
+    <Compile Include="Internal\Execution.cs" />
     <Compile Include="Internal\GameObject.cs" />
     <Compile Include="Internal\Helpers.cs" />
+    <Compile Include="Internal\InstanceBases\State.cs" />
     <Compile Include="Internal\StaticResources.cs" />
     <Compile Include="Internal\Scripting\OpCode.cs" />
     <Compile Include="Internal\Scripting\Statement.cs" />

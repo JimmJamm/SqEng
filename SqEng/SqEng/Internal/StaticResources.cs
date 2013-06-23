@@ -6,11 +6,21 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.IO;
 using SFML.Graphics;
+using SqEng.Internal.InstanceBases;
 
 namespace SqEng.Internal
 {
     public static class StaticResources
     {
+        private static State state;
+        public static State State
+        {
+            get
+            {
+                return state ?? (state = new State());
+            }
+        }
+
         private static Dictionary<string, Sprite> tilesheets;
         public static Dictionary<string, Sprite> Tilesheets
         {

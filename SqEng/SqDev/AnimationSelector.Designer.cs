@@ -28,18 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.lboAnimations = new System.Windows.Forms.ListBox();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // listBox1
+            // lboAnimations
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(13, 52);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(349, 199);
-            this.listBox1.TabIndex = 0;
+            this.lboAnimations.FormattingEnabled = true;
+            this.lboAnimations.Location = new System.Drawing.Point(13, 52);
+            this.lboAnimations.Name = "lboAnimations";
+            this.lboAnimations.Size = new System.Drawing.Size(349, 199);
+            this.lboAnimations.TabIndex = 0;
+            this.lboAnimations.DoubleClick += new System.EventHandler(this.listBox1_DoubleClick);
             // 
             // btnRefresh
             // 
@@ -49,6 +50,7 @@
             this.btnRefresh.TabIndex = 1;
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // btnNew
             // 
@@ -58,6 +60,7 @@
             this.btnNew.TabIndex = 2;
             this.btnNew.Text = "New";
             this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // AnimationSelector
             // 
@@ -66,7 +69,7 @@
             this.ClientSize = new System.Drawing.Size(374, 261);
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.btnRefresh);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.lboAnimations);
             this.Name = "AnimationSelector";
             this.Text = "AnimationSelector";
             this.Load += new System.EventHandler(this.AnimationSelector_Load);
@@ -76,7 +79,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox lboAnimations;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Button btnNew;
     }

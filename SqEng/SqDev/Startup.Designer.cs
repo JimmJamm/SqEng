@@ -32,6 +32,7 @@
             this.btnPublish = new System.Windows.Forms.Button();
             this.btnCompile = new System.Windows.Forms.Button();
             this.btnFrameEditor = new System.Windows.Forms.Button();
+            this.btnAnimationEdtior = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnRun
@@ -63,24 +64,35 @@
             // 
             // btnFrameEditor
             // 
-            this.btnFrameEditor.Location = new System.Drawing.Point(197, 13);
+            this.btnFrameEditor.Location = new System.Drawing.Point(145, 13);
             this.btnFrameEditor.Name = "btnFrameEditor";
-            this.btnFrameEditor.Size = new System.Drawing.Size(75, 23);
+            this.btnFrameEditor.Size = new System.Drawing.Size(127, 23);
             this.btnFrameEditor.TabIndex = 3;
             this.btnFrameEditor.Text = "Frame Editor";
             this.btnFrameEditor.UseVisualStyleBackColor = true;
             this.btnFrameEditor.Click += new System.EventHandler(this.btnFrameEditor_Click);
             // 
-            // Form1
+            // btnAnimationEdtior
+            // 
+            this.btnAnimationEdtior.Location = new System.Drawing.Point(145, 42);
+            this.btnAnimationEdtior.Name = "btnAnimationEdtior";
+            this.btnAnimationEdtior.Size = new System.Drawing.Size(127, 23);
+            this.btnAnimationEdtior.TabIndex = 4;
+            this.btnAnimationEdtior.Text = "Animation Editor";
+            this.btnAnimationEdtior.UseVisualStyleBackColor = true;
+            this.btnAnimationEdtior.Click += new System.EventHandler(this.btnAnimationEdtior_Click);
+            // 
+            // Startup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.btnAnimationEdtior);
             this.Controls.Add(this.btnFrameEditor);
             this.Controls.Add(this.btnCompile);
             this.Controls.Add(this.btnPublish);
             this.Controls.Add(this.btnRun);
-            this.Name = "Form1";
+            this.Name = "Startup";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
@@ -93,6 +105,7 @@
         private System.Windows.Forms.Button btnPublish;
         private System.Windows.Forms.Button btnCompile;
         private System.Windows.Forms.Button btnFrameEditor;
+        private System.Windows.Forms.Button btnAnimationEdtior;
     }
 }
 

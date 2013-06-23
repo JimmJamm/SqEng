@@ -11,6 +11,19 @@ namespace SqEng.Internal.Animation
     {
         #region serialized
 
+        private string name;
+        public string Name
+        {
+            get
+            {
+                return name ?? (name = "");
+            }
+            set
+            {
+                name = value;
+            }
+        }
+
         private List<Frame> frames;
         public List<Frame> Frames
         {
@@ -38,6 +51,14 @@ namespace SqEng.Internal.Animation
 
         }
 
+        public Animation(XmlDocument x)
+            : base(x)
+        {
+
+        }
+
+        public Animation() : base() { }
+
         public override void LoadXmlDoc(System.Xml.XmlDocument x)
         {
             foreach (XmlNode n in x.DocumentElement.ChildNodes)
@@ -60,18 +81,39 @@ namespace SqEng.Internal.Animation
                     case "rate":
                         Rate = Convert.ToSingle(val);
                         break;
+                    case "name":
+                        Name = val;
+                        break;
                 }
             }
         }
 
         public override SFML.Graphics.Sprite Sprite
         {
-            get { throw new NotImplementedException(); }
+            get
+            {
+                return Frames[Index].Sprite;
+            }
         }
 
         public override string ToXml()
         {
-            throw new NotImplementedException();
+            return 
+                "<animation>" +
+                    "<name>" + Name + "</name>" +
+                    "<index>" + Index + "</index>" +
+                    "<start>" + Start + "</start>" +
+                    "<frames>" +
+                        string.Join("", (from f in Frames select f.ToXml())) +
+                    "</frames>" +
+                "</animation>";
+        }
+
+        protected override void onTick()
+        {
+            Index++;
+            if (Index >= Frames.Count)
+                Index = Start;
         }
 
         #endregion

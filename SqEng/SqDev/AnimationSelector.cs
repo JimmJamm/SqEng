@@ -26,9 +26,10 @@ namespace SqDev
 
         public void RefreshItems()
         {
-            foreach (FileInfo fi in (new DirectoryInfo("data/animations").GetFiles()))
+            lboAnimations.Items.Clear();
+            foreach (DirectoryInfo di in (new DirectoryInfo("data/animations").GetDirectories()))
             {
-
+                lboAnimations.Items.Add(di.Name);
             }
         }
 
@@ -39,6 +40,26 @@ namespace SqDev
                 Directory.CreateDirectory("data/animations");
                 MessageBox.Show("Directory data/animations created.");
             }
+            RefreshItems();
+        }
+
+        private void listBox1_DoubleClick(object sender, EventArgs e)
+        {
+            (new AnimationEditor(lboAnimations.SelectedItem.ToString())).Show();
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            RefreshItems();
+        }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            string name = Microsoft.VisualBasic.Interaction.InputBox("Name: ");
+            Directory.CreateDirectory("data/animations/" + name);
+            Animation tmpAnimation = new Animation();
+            File.WriteAllText("data/animations/" + name + "/data.xml", tmpAnimation.ToXml());
+            RefreshItems();
         }
     }
 }

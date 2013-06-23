@@ -177,7 +177,7 @@ namespace SqDev
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            File.WriteAllText("data/frames/" + frame.Name + " /data.xml", frame.ToXml());
+            File.WriteAllText("data/frames/" + frame.BasePath + " /data.xml", frame.ToXml());
         }
 
         private void pnlTileSheet_Resize(object sender, EventArgs e)
@@ -192,16 +192,6 @@ namespace SqDev
         }
     }
 
-    public class MyPanel : System.Windows.Forms.Panel
-    {
-        public MyPanel()
-        {
-            this.SetStyle(
-                System.Windows.Forms.ControlStyles.UserPaint |
-                System.Windows.Forms.ControlStyles.AllPaintingInWmPaint |
-                System.Windows.Forms.ControlStyles.OptimizedDoubleBuffer,
-                true);
-        }
-    }
+
 
 }

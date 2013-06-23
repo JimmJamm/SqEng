@@ -10,8 +10,21 @@ namespace SqEng.Internal.Animation
 {
     public class Frame : GameObject
     {
+        private string tilesheet;
+        private Sprite sprite;
         #region serialized
-        public string TileSheet;
+        public string TileSheet
+        {
+            get
+            {
+                return tilesheet;
+            }
+            set
+            {
+                tilesheet = value;
+                sprite = StaticResources.Tilesheets[value];
+            }
+        }
 
         public int X, Y, W, H;
 
@@ -21,6 +34,12 @@ namespace SqEng.Internal.Animation
 
         public Frame(string path) 
             : base(path)
+        {
+
+        }
+
+        public Frame(XmlDocument x)
+            : base(x)
         {
 
         }
@@ -37,7 +56,7 @@ namespace SqEng.Internal.Animation
         {
             get
             {
-                return StaticResources.Tilesheets[TileSheet];
+                return sprite;
             }
         }
 

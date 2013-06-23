@@ -26,5 +26,10 @@ namespace SqDev
         {
             (new FrameSelector()).Show();
         }
+
+        private void btnAnimationEdtior_Click(object sender, EventArgs e)
+        {
+            (new AnimationSelector()).Show();
+        }
     }
 }

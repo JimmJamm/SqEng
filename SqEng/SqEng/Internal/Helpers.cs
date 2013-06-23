@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace SqEng.Internal
 {
@@ -72,6 +73,13 @@ namespace SqEng.Internal
                 pieces.Add(piece);
 
             return pieces.ToArray();
+        }
+
+        public static XmlDocument NodeToDoc(XmlNode n)
+        {
+            XmlDocument x = new XmlDocument();
+            x.LoadXml(n.OuterXml);
+            return x;
         }
     }
 }
