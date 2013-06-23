@@ -89,9 +89,7 @@
     <Compile Include="FrameSelector.Designer.cs">
       <DependentUpon>FrameSelector.cs</DependentUpon>
     </Compile>
-    <Compile Include="DrawPanel.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="SqDev.cs" />
     <Compile Include="Startup.cs">
       <SubType>Form</SubType>
     </Compile>

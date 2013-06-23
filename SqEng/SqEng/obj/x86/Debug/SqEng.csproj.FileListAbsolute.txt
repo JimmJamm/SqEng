@@ -24,3 +24,4 @@ C:\Users\user\Dropbox\git\SqEng\SqEng\SqEng\bin\x86\Debug\sfmlnet-window-2.dll
 C:\Users\user\Dropbox\git\SqEng\SqEng\SqEng\bin\x86\Debug\System.Net.Json.dll
 C:\Users\user\Dropbox\git\SqEng\SqEng\SqEng\obj\x86\Debug\SqEng.dll
 C:\Users\user\Dropbox\git\SqEng\SqEng\SqEng\obj\x86\Debug\SqEng.pdb
+C:\Users\user\Dropbox\git\SqEng\SqEng\SqEng\obj\x86\Debug\SqEng.csprojResolveAssemblyReference.cache

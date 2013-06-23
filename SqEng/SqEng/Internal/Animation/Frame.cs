@@ -17,12 +17,15 @@ namespace SqEng.Internal.Animation
         {
             get
             {
-                return tilesheet;
+                return tilesheet ?? (tilesheet = "");
             }
             set
             {
                 tilesheet = value;
-                sprite = StaticResources.Tilesheets[value];
+                if (value != null && StaticResources.Tilesheets.ContainsKey(value))
+                {
+                    sprite = StaticResources.Tilesheets[value];
+                }
             }
         }
 
@@ -35,7 +38,7 @@ namespace SqEng.Internal.Animation
         public Frame(string path) 
             : base(path)
         {
-
+            
         }
 
         public Frame(XmlDocument x)
@@ -95,11 +98,12 @@ namespace SqEng.Internal.Animation
         {
             return
                 "<frame>" +
-                "<x>" + X + "</x>" +
-                "<y>" + Y + "</y>" +
-                "<w>" + W + "</w>" +
-                "<h>" + H + "</h>" +
-                (TileSheet == null ? "" : "<tilesheet>" + TileSheet + "</tilesheet>") +
+                    "<x>" + X + "</x>" +
+                    "<y>" + Y + "</y>" +
+                    "<w>" + W + "</w>" +
+                    "<h>" + H + "</h>" +
+                    "<tilesheet>" + TileSheet + "</tilesheet>" +
+                    BaseXml +
                 "</frame>";
              
         }

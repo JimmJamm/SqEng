@@ -39,10 +39,10 @@
             this.txtStart = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.tmrAnimate = new System.Windows.Forms.Timer(this.components);
-            this.pnlCurrentFrame = new SqDev.DrawPanel();
             this.btnSave = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.txtRate = new System.Windows.Forms.TextBox();
+            this.pnlCurrentFrame = new SqDev.DrawPanel();
             this.SuspendLayout();
             // 
             // lboBaseFrames
@@ -121,6 +121,7 @@
             this.txtStart.Size = new System.Drawing.Size(100, 20);
             this.txtStart.TabIndex = 8;
             this.txtStart.Text = "0";
+            this.txtStart.TextChanged += new System.EventHandler(this.txtStart_TextChanged);
             // 
             // label4
             // 
@@ -136,15 +137,6 @@
             this.tmrAnimate.Interval = 10;
             this.tmrAnimate.Tick += new System.EventHandler(this.tmrAnimate_Tick);
             // 
-            // pnlCurrentFrame
-            // 
-            this.pnlCurrentFrame.Location = new System.Drawing.Point(12, 38);
-            this.pnlCurrentFrame.Name = "pnlCurrentFrame";
-            this.pnlCurrentFrame.Size = new System.Drawing.Size(604, 368);
-            this.pnlCurrentFrame.TabIndex = 3;
-            this.pnlCurrentFrame.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlCurrentFrame_Paint);
-            this.pnlCurrentFrame.Resize += new System.EventHandler(this.pnlCurrentFrame_Resize);
-            // 
             // btnSave
             // 
             this.btnSave.Location = new System.Drawing.Point(541, 9);
@@ -153,6 +145,7 @@
             this.btnSave.TabIndex = 10;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // label5
             // 
@@ -170,6 +163,17 @@
             this.txtRate.Size = new System.Drawing.Size(100, 20);
             this.txtRate.TabIndex = 12;
             this.txtRate.Text = "1";
+            this.txtRate.TextChanged += new System.EventHandler(this.txtRate_TextChanged);
+            this.txtRate.Leave += new System.EventHandler(this.txtRate_Leave);
+            // 
+            // pnlCurrentFrame
+            // 
+            this.pnlCurrentFrame.Location = new System.Drawing.Point(12, 38);
+            this.pnlCurrentFrame.Name = "pnlCurrentFrame";
+            this.pnlCurrentFrame.Size = new System.Drawing.Size(604, 368);
+            this.pnlCurrentFrame.TabIndex = 3;
+            this.pnlCurrentFrame.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlCurrentFrame_Paint);
+            this.pnlCurrentFrame.Resize += new System.EventHandler(this.pnlCurrentFrame_Resize);
             // 
             // AnimationEditor
             // 
@@ -202,7 +206,7 @@
         private System.Windows.Forms.ListBox lboBaseFrames;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label Label1;
-        private DrawPanel pnlCurrentFrame;
+        private SqDev.DrawPanel pnlCurrentFrame;
         private System.Windows.Forms.ListBox lboMyFrames;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;

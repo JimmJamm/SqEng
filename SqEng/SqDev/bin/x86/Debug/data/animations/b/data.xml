@@ -1,0 +1,1 @@
+<animation><name></name><index>0</index><start>0</start><frames><frame><x>480</x><y>128</y><w>48</w><h>64</h><tilesheet>colors.png</tilesheet><base>a</base><rate>1</rate></frame></frames><base>b</base><rate>1</rate></animation>

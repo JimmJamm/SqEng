@@ -206,7 +206,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private DrawPanel pnlTileSheet;
+        private SqDev.DrawPanel pnlTileSheet;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtSnap;

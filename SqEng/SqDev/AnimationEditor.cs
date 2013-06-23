@@ -22,7 +22,7 @@ namespace SqDev
         public Graphics pnlBuffer;
         public Bitmap pnlBmp;
 
-        public DateTime LastTick;
+        public DateTime LastTick = DateTime.Now;
 
         #endregion
 
@@ -74,12 +74,13 @@ namespace SqDev
             pnlCurrentFrame.Invalidate();
             LastTick = DateTime.Now;
 
-            Text = SqEng.Internal.Execution.DeltaTimeMS.ToString();
+            Text = @Animation.Rate.ToString();
+
+            //Text = SqEng.Internal.Execution.DeltaTimeMS.ToString();
         }
 
         private void pnlCurrentFrame_Paint(object sender, PaintEventArgs e)
         {
-            return;
             if (lboMyFrames.Items.Count > 0)
             {
                 try
@@ -93,6 +94,8 @@ namespace SqDev
                     pnlBuffer.DrawImage(tmpImage, destRect, sourceRect, GraphicsUnit.Pixel);
 
                     tmpImage.Dispose();
+
+                    e.Graphics.DrawImage(pnlBmp, new Point(0, 0));
                 }
                 catch (Exception ex)
                 {
@@ -137,6 +140,48 @@ namespace SqDev
         private void pnlCurrentFrame_Resize(object sender, EventArgs e)
         {
             bufferInit();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            File.WriteAllText("data/animations/" + Animation.BasePath + "/data.xml", @Animation.ToXml());
+        }
+
+        private void txtStart_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                @Animation.Start = Convert.ToInt32(txtRate.Text);
+            }
+            catch (Exception)
+            {
+                @Animation.Rate = 1;
+            }
+            finally
+            {
+                AnimationToControls();
+            }
+        }
+
+        private void txtRate_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtRate_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                @Animation.Rate = Convert.ToDouble(txtRate.Text);
+            }
+            catch (Exception)
+            {
+                @Animation.Rate = 1.0d;
+            }
+            finally
+            {
+                AnimationToControls();
+            }
         }
     }
 }

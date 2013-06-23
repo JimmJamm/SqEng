@@ -69,7 +69,7 @@ namespace SqEng.Internal.Animation
                     case "frames":
                         foreach (XmlNode frameNode in n.ChildNodes)
                         {
-                            Frames.Add(new Frame(frameNode.OuterXml));
+                            Frames.Add(new Frame(Helpers.NodeToDoc(frameNode)));
                         }
                         break;
                     case "index":
@@ -106,6 +106,7 @@ namespace SqEng.Internal.Animation
                     "<frames>" +
                         string.Join("", (from f in Frames select f.ToXml())) +
                     "</frames>" +
+                    BaseXml +
                 "</animation>";
         }
 

@@ -16,9 +16,9 @@ namespace SqDev
 
     public partial class FrameEditor : Form
     {
-        public FrameEditor(string frameName)
+        public FrameEditor(string path)
         {
-            frame = new Frame(frameName);
+            frame = new Frame(path);
             InitializeComponent();
         }
 
@@ -72,7 +72,7 @@ namespace SqDev
             txtW.Text = frame.W.ToString();
             txtH.Text = frame.H.ToString();
 
-            if (frame.TileSheet != null)
+            if (frame.TileSheet != null && File.Exists("data/tilesheets/" + frame.TileSheet))
             {
                 TileSheet = new Bitmap("data/tilesheets/" + frame.TileSheet);
             }

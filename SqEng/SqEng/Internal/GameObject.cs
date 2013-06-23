@@ -17,25 +17,32 @@ namespace SqEng.Internal
         public abstract void LoadXmlDoc(XmlDocument x);
         public XmlDocument InitialXmlDoc;
         public string BasePath;
-        public float Rate = 1.0f;
+        public double Rate = 1.0f;
+
+        public string BaseXml
+        {
+            get
+            {
+                return
+                    "<base>" + BasePath + "</base>" +
+                    "<rate>" + Rate + "</rate>";
+            }
+        }
 
         protected virtual void onTick() { }
         public double MSSinceLastTick = 1.0f;
 
-        public void Tick(float rate = 1.0f)
+        public void Tick(double rate = 1.0f)
         {
-            float totalRate = Rate * rate;
-            if (totalRate <= 1.0e-10)
+            double totalRate = Rate * rate;
+            if (totalRate == 0)
                 return;
-
-            File.AppendAllText("c:/log.txt", "start\n");
 
             MSSinceLastTick += Execution.DeltaTimeMS;
 
-            if (MSSinceLastTick >= Execution.MSPF / totalRate)
+            while (MSSinceLastTick >= Execution.MSPF / totalRate)
             {
                 onTick();
-                File.AppendAllText("c:/log.txt", MSSinceLastTick + "\r\n");
                 MSSinceLastTick -= Execution.MSPF / totalRate;
             }
         }
@@ -53,13 +60,14 @@ namespace SqEng.Internal
 
         private void baseLoadXml(XmlDocument x)
         {
-            foreach (XmlNode n in x)
+            foreach (XmlNode n in x.DocumentElement.ChildNodes)
             {
                 string val = n.InnerText.Trim();
                 switch (n.Name)
                 {
                     case "base":
-                        LoadXmlDoc(StaticResources.GetXml(val));
+                        BasePath = val;
+                        LoadXmlDoc(StaticResources.GetXml(Path.Combine(TypePath, val)));
                         break;
                     case "rate":
                         Rate = Convert.ToSingle(val);

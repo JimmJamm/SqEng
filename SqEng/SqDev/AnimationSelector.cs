@@ -45,6 +45,11 @@ namespace SqDev
 
         private void listBox1_DoubleClick(object sender, EventArgs e)
         {
+            if (lboAnimations.SelectedItem == null)
+            {
+                MessageBox.Show("Select an item!");
+                return;
+            }
             (new AnimationEditor(lboAnimations.SelectedItem.ToString())).Show();
         }
 
