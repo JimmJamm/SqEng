@@ -1,0 +1,8 @@
+<actor>
+	<type>rock</type>
+	<animation>
+		<base>
+			c
+		</base>
+	</animation>
+</actor>

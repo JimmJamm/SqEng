@@ -81,6 +81,7 @@
     <Compile Include="Internal\InstanceBases\State.cs" />
     <Compile Include="Internal\SeaPonyDash\Actor.cs" />
     <Compile Include="Internal\SeaPonyDash\Animations.cs" />
+    <Compile Include="Internal\SeaPonyDash\Blocks.cs" />
     <Compile Include="Internal\Sequence.cs" />
     <Compile Include="Internal\Sound.cs" />
     <Compile Include="Internal\StaticResources.cs" />

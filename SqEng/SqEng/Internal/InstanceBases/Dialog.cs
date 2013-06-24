@@ -11,8 +11,6 @@ namespace SqEng.Internal.InstanceBases
 {
     public class Dialog
     {
-        public static Font CelestiaRedux = new Font("data/bin/celestiaredux.ttf");
-
         public bool Active;
         private string message;
         public string Message
@@ -24,8 +22,9 @@ namespace SqEng.Internal.InstanceBases
             set
             {
                 message = value;
-                SFMLText = new Text(message + "\nPress any key to continue.", CelestiaRedux);
-                SFMLText.CharacterSize = 25;
+                SFMLText = new Text(message + "\nPress any key to continue.", StaticResources.CelestiaRedux);
+                SFMLText.CharacterSize = 32;
+                SFMLText.Position = new Vector2f(32, 128);
             }
         }
 
@@ -46,12 +45,16 @@ namespace SqEng.Internal.InstanceBases
         public byte g = 0;
         public byte b = 0;
 
+        public long cnt = 0;
+
         public void Tick()
         {
             unchecked{
-                r += (byte)Helpers.Rnd.Next(0, 10);
-                g += (byte)Helpers.Rnd.Next(1, 11);
-                b += (byte)Helpers.Rnd.Next(2, 12);
+                cnt += (long)Execution.DeltaTimeMS;
+                double tmp = cnt / 200.0;
+                r = (byte)(127 + 127 * Math.Sin(tmp));
+                g = (byte)(127 + 127 * Math.Sin(Math.PI / 2 + tmp));
+                b = (byte)(127 + 127 * Math.Sin(2.0 / 3.0 * Math.PI + tmp));
             }
             SFMLText.Color = new Color(r, g, b);
         }

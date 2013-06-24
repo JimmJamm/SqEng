@@ -8,6 +8,7 @@ using SqEng.Internal.Animation;
 using SFML.Graphics;
 using SFML.Window;
 using System.Xml;
+using SqEng.Internal.SeaPonyDash;
 
 namespace SqEng.Internal.InstanceBases
 {
@@ -21,6 +22,15 @@ namespace SqEng.Internal.InstanceBases
 
     public class State : GameObject
     {
+        private Actor maincharacter;
+        public Actor MainCharacter
+        {
+            get
+            {
+                return maincharacter;
+            }
+        }
+
         public int Candies = 0;
 
         private Dialog dialog;
@@ -31,8 +41,6 @@ namespace SqEng.Internal.InstanceBases
                 return dialog ?? (dialog = new Dialog(""));
             }
         }
-
-        public SeaPonyDash.Actor MainCharacter;
 
         private List<SeaPonyDash.Actor> actors;
         public List<SeaPonyDash.Actor> Actors
@@ -74,6 +82,7 @@ namespace SqEng.Internal.InstanceBases
                 {
                     bg = new Animation.Animation("background");
                 }
+                bg.Sprite.Origin = new Vector2f(0, 0);
                 return bg.Sprite;
             }
         }
@@ -101,16 +110,34 @@ namespace SqEng.Internal.InstanceBases
         {
             foreach (XmlNode n in x.DocumentElement.ChildNodes)
             {
+                //switch (n.Name)
+                //{
+                //    case "shark":
+                //        Actors.Add(SeaPonyDash.Actor.Shark);
+                //        break;
+                //    case "maincharacter":
+                //        Actors.Add(SeaPonyDash.Actor.MainCharacter);
+                //        break;
+                //    case "taffy":
+                //        Actors.Add(SeaPonyDash.Actor.Taffy);
+                //        break;
+                //}
+
+                string val = n.InnerText.Trim();
                 switch (n.Name)
                 {
-                    case "shark":
-                        Actors.Add(SeaPonyDash.Actor.Shark);
-                        break;
-                    case "maincharacter":
-                        Actors.Add(SeaPonyDash.Actor.MainCharacter);
-                        break;
-                    case "taffy":
-                        Actors.Add(SeaPonyDash.Actor.Taffy);
+                    case "actor":
+                        Actor tmpActor = new Actor(Helpers.NodeToDoc(n));
+                        Actors.Add(tmpActor);
+                        if (tmpActor.Type == ActorType.MainCharacter)
+                            maincharacter = tmpActor;
+                        else if (tmpActor.Type == ActorType.Taffy)
+                        {
+                            SeaPonyDash.Actor.TaffyIndex++;
+                            if (Actor.TaffyIndex >= Actor.TaffyNames.Length)
+                                Actor.TaffyIndex = 0;
+                            tmpActor.Animation = new Animation.Animation(Actor.TaffyNames[Actor.TaffyIndex]);
+                        }
                         break;
                 }
             }
@@ -128,7 +155,8 @@ namespace SqEng.Internal.InstanceBases
             {
                 foreach (var a in Actors)
                 {
-                    a.Tick();
+                    if (a.OnScreen)
+                        a.Tick();
                 }
             }
         }

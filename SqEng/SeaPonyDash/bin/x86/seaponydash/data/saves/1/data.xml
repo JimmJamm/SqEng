@@ -1,0 +1,21 @@
+<state>
+	<actor>
+		<base>maincharacter</base>
+		<x>0</x>
+		<y>0</y>
+	</actor>>
+
+	<actor>
+		<base>shark</base>
+		<x>400</x>
+		<y>-400</y>
+	</actor>
+
+	<actor>
+		<base>taffy</base>
+		<x>-100</x>
+		<y>100</y>
+	</actor>
+
+
+</state>

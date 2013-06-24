@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+
 using SFML.Graphics;
+using SFML.Window;
 
 namespace SqEng.Internal.Animation
 {
@@ -12,6 +14,7 @@ namespace SqEng.Internal.Animation
     {
         private string tilesheet;
         private Sprite sprite;
+        public bool Flipped = false;
 
         #region serialized
         public string TileSheet
@@ -26,7 +29,34 @@ namespace SqEng.Internal.Animation
                 if (value != null && StaticResources.Tilesheets.ContainsKey(value))
                 {
                     sprite = StaticResources.Tilesheets[value];
+                    sprite.Origin = new SFML.Window.Vector2f(W / 2, H / 2);
                 }
+            }
+        }
+
+        public void MakeUnflipped()
+        {
+            Flipped = false;
+            if (sprite.Scale.X < 0)
+            {
+                //var oldorigin = sprite.Origin;
+                //sprite.Origin = new Vector2f(W / 2, H / 2);
+                sprite.Scale = new Vector2f(1, 1);
+                //sprite.Position = new Vector2f(sprite.Position.X - W, sprite.Position.Y);
+                //sprite.Origin = oldorigin;
+            }
+        }
+
+        public void MakeFlipped()
+        {
+            Flipped = true;
+            if (sprite.Scale.X > 0)
+            {
+                //var oldorigin = sprite.Origin;
+                //sprite.Origin = new Vector2f(W / 2, H / 2);
+                sprite.Scale = new Vector2f(-1, 1);
+                //sprite.Position = new Vector2f(sprite.Position.X + W, sprite.Position.Y);
+                //sprite.Origin = oldorigin;
             }
         }
 
@@ -109,18 +139,6 @@ namespace SqEng.Internal.Animation
              
         }
 
-        public override Collision Collision
-        {
-            get
-            {
-                return new Collision(
-                    new FloatRect(
-                        sprite.Position.X, sprite.Position.Y,
-                        W, H
-                    )
-                );
-            }
-        }
         #endregion
 
     }

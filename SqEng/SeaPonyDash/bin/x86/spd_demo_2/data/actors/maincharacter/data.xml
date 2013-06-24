@@ -1,0 +1,8 @@
+<actor>
+	<type>maincharacter</type>
+	<animation>
+		<base>
+			idle
+		</base>
+	</animation>
+</actor>

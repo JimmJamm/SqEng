@@ -12,6 +12,7 @@ namespace SqEng.Internal
 {
     public static class StaticResources
     {
+        public static Font CelestiaRedux = new Font("data/bin/celestiaredux.ttf");
 
         private static State state;
         public static State State
