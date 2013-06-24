@@ -110,6 +110,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StateEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StateEditor.Designer.cs">
+      <DependentUpon>StateEditor.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AnimationEditor.resx">
       <DependentUpon>AnimationEditor.cs</DependentUpon>
     </EmbeddedResource>
@@ -141,6 +147,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="StateEditor.resx">
+      <DependentUpon>StateEditor.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -34,6 +34,7 @@
             this.btnFrameEditor = new System.Windows.Forms.Button();
             this.btnAnimationEdtior = new System.Windows.Forms.Button();
             this.btnAnimationGroupEditor = new System.Windows.Forms.Button();
+            this.btnStateEditor = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnRun
@@ -44,6 +45,7 @@
             this.btnRun.TabIndex = 0;
             this.btnRun.Text = "Run Game";
             this.btnRun.UseVisualStyleBackColor = true;
+            this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
             // 
             // btnPublish
             // 
@@ -93,11 +95,22 @@
             this.btnAnimationGroupEditor.UseVisualStyleBackColor = true;
             this.btnAnimationGroupEditor.Click += new System.EventHandler(this.btnAnimationGroupEditor_Click);
             // 
+            // btnStateEditor
+            // 
+            this.btnStateEditor.Location = new System.Drawing.Point(145, 100);
+            this.btnStateEditor.Name = "btnStateEditor";
+            this.btnStateEditor.Size = new System.Drawing.Size(127, 23);
+            this.btnStateEditor.TabIndex = 6;
+            this.btnStateEditor.Text = "State Editor";
+            this.btnStateEditor.UseVisualStyleBackColor = true;
+            this.btnStateEditor.Click += new System.EventHandler(this.btnStateEditor_Click);
+            // 
             // Startup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.btnStateEditor);
             this.Controls.Add(this.btnAnimationGroupEditor);
             this.Controls.Add(this.btnAnimationEdtior);
             this.Controls.Add(this.btnFrameEditor);
@@ -119,6 +132,7 @@
         private System.Windows.Forms.Button btnFrameEditor;
         private System.Windows.Forms.Button btnAnimationEdtior;
         private System.Windows.Forms.Button btnAnimationGroupEditor;
+        private System.Windows.Forms.Button btnStateEditor;
     }
 }
 

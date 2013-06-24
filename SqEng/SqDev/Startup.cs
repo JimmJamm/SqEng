@@ -19,7 +19,7 @@ namespace SqDev
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            SqEng.SqEng.Start();
+            
         }
 
         private void btnFrameEditor_Click(object sender, EventArgs e)
@@ -35,6 +35,16 @@ namespace SqDev
         private void btnAnimationGroupEditor_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void btnRun_Click(object sender, EventArgs e)
+        {
+            SqEng.SqEng.Start();
+        }
+
+        private void btnStateEditor_Click(object sender, EventArgs e)
+        {
+            (new StateEditor()).Show();
         }
     }
 }

@@ -73,11 +73,16 @@
     <Compile Include="Internal\Animation\Animation.cs" />
     <Compile Include="Internal\Animation\AnimationGroup.cs" />
     <Compile Include="Internal\Animation\Collision.cs" />
+    <Compile Include="Internal\InstanceBases\Dialog.cs" />
     <Compile Include="Internal\Animation\Frame.cs" />
     <Compile Include="Internal\Execution.cs" />
     <Compile Include="Internal\GameObject.cs" />
     <Compile Include="Internal\Helpers.cs" />
     <Compile Include="Internal\InstanceBases\State.cs" />
+    <Compile Include="Internal\SeaPonyDash\Actor.cs" />
+    <Compile Include="Internal\SeaPonyDash\Animations.cs" />
+    <Compile Include="Internal\Sequence.cs" />
+    <Compile Include="Internal\Sound.cs" />
     <Compile Include="Internal\StaticResources.cs" />
     <Compile Include="Internal\Scripting\OpCode.cs" />
     <Compile Include="Internal\Scripting\Statement.cs" />

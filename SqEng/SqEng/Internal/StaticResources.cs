@@ -12,12 +12,13 @@ namespace SqEng.Internal
 {
     public static class StaticResources
     {
+
         private static State state;
         public static State State
         {
             get
             {
-                return state ?? (state = new State());
+                return state ?? (state = new State("1"));
             }
         }
 

@@ -6,23 +6,11 @@ using System.Threading.Tasks;
 
 using System.IO;
 
-namespace SqDev
+namespace SqDev.Etc
 {
 
     public static class SqDev
     {
-        public class DrawPanel : System.Windows.Forms.Panel
-        {
-            public DrawPanel()
-            {
-                this.SetStyle(
-                    System.Windows.Forms.ControlStyles.UserPaint |
-                    System.Windows.Forms.ControlStyles.AllPaintingInWmPaint |
-                    System.Windows.Forms.ControlStyles.OptimizedDoubleBuffer,
-                    true);
-            }
-        }
-
 
         //http://msdn.microsoft.com/en-us/library/bb762914.aspx
         public static void DirectoryCopy(string sourceDirName, string destDirName, bool copySubDirs)

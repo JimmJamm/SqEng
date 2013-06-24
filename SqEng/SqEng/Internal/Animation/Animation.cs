@@ -9,6 +9,14 @@ namespace SqEng.Internal.Animation
 {
     public class Animation : GameObject
     {
+        public Frame Frame
+        {
+            get
+            {
+                return Frames[Index];
+            }
+        }
+
         #region serialized
 
         private string name;
@@ -100,13 +108,12 @@ namespace SqEng.Internal.Animation
         {
             return 
                 "<animation>" +
-                    (full ?
                     "<name>" + Name + "</name>" +
                     "<index>" + Index + "</index>" +
                     "<start>" + Start + "</start>" +
                     "<frames>" +
-                        string.Join("", (from f in Frames select f.ToXml())) +
-                    "</frames>" : "") +
+                        string.Join("", (from f in Frames select f.ToXml(full))) +
+                    "</frames>" +
                     BaseXml +
                 "</animation>";
         }
@@ -114,6 +121,7 @@ namespace SqEng.Internal.Animation
         protected override void onTick()
         {
             Index++;
+            //Execution.window.SetTitle(BasePath + " " + Index.ToString());
             if (Index >= Frames.Count)
                 Index = Start;
         }

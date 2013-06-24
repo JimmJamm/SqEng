@@ -5,7 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.IO;
+
 using SFML.Graphics;
+using SqEng.Internal.Animation;
 
 namespace SqEng.Internal
 {
@@ -18,6 +20,9 @@ namespace SqEng.Internal
         public XmlDocument InitialXmlDoc;
         public string BasePath;
         public double Rate = 1.0f;
+
+        protected Collision collision;
+        public virtual Collision Collision { get { return null; } }
 
         public string BaseXml
         {
@@ -40,11 +45,17 @@ namespace SqEng.Internal
 
             MSSinceLastTick += Execution.DeltaTimeMS;
 
-            while (MSSinceLastTick >= Execution.MSPF / totalRate)
+            if (MSSinceLastTick >= Execution.MSPF / totalRate)
             {
                 onTick();
-                MSSinceLastTick -= Execution.MSPF / totalRate;
+                MSSinceLastTick = 0;
             }
+
+            //while (MSSinceLastTick >= Execution.MSPF / totalRate)
+            //{
+            //    onTick();
+            //    MSSinceLastTick -= Execution.MSPF / totalRate;
+            //}
         }
 
         public GameObject(string basePath)

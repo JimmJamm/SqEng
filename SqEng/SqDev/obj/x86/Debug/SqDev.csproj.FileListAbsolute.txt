@@ -23,3 +23,5 @@ C:\Users\user\dropbox\git\SqEng\SqEng\SqDev\obj\x86\Debug\SqDev.AnimationEditor.
 C:\Users\user\dropbox\git\SqEng\SqEng\SqDev\obj\x86\Debug\SqDev.AnimationSelector.resources
 C:\Users\user\Dropbox\git\SqEng\SqEng\SqDev\obj\x86\Debug\SqDev.AnimationGroupEditor.resources
 C:\Users\user\Dropbox\git\SqEng\SqEng\SqDev\obj\x86\Debug\SqDev.AnimationGroupSelector.resources
+C:\Users\user\Dropbox\git\SqEng\SqEng\SqDev\bin\x86\Debug\sfmlnet-audio-2.dll
+C:\Users\user\Dropbox\git\SqEng\SqEng\SqDev\obj\x86\Debug\SqDev.StateEditor.resources

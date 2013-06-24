@@ -13,6 +13,8 @@ namespace SqEng.Internal
 {
     public static class Helpers
     {
+        public static Random Rnd = new Random();
+
         private enum splitMode
         {
             Whitespace,

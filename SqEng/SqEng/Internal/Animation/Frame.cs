@@ -12,6 +12,7 @@ namespace SqEng.Internal.Animation
     {
         private string tilesheet;
         private Sprite sprite;
+
         #region serialized
         public string TileSheet
         {
@@ -108,6 +109,18 @@ namespace SqEng.Internal.Animation
              
         }
 
+        public override Collision Collision
+        {
+            get
+            {
+                return new Collision(
+                    new FloatRect(
+                        sprite.Position.X, sprite.Position.Y,
+                        W, H
+                    )
+                );
+            }
+        }
         #endregion
 
     }

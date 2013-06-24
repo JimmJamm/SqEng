@@ -1,0 +1,5 @@
+<animation>
+<name></name>
+<index>1</index>
+<start>0</start>
+<frames><frame><x>0</x><y>0</y><w>80</w><h>160</h><tilesheet>idle3.png</tilesheet><base>idle1</base><rate>1</rate></frame><frame><x>0</x><y>0</y><w>80</w><h>160</h><tilesheet>spin2.png</tilesheet><base>spin_back</base><rate>1</rate></frame><frame><x>0</x><y>0</y><w>80</w><h>160</h><tilesheet>left.png</tilesheet><base>left</base><rate>1</rate></frame></frames><base>spin</base><rate>1.5</rate></animation>
