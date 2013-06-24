@@ -55,6 +55,7 @@
             this.lboBaseFrames.Size = new System.Drawing.Size(81, 381);
             this.lboBaseFrames.TabIndex = 0;
             this.lboBaseFrames.DoubleClick += new System.EventHandler(this.lboBaseFrames_DoubleClick);
+
             // 
             // txtName
             // 

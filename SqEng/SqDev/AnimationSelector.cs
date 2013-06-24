@@ -62,7 +62,7 @@ namespace SqDev
         {
             string name = Microsoft.VisualBasic.Interaction.InputBox("Name: ");
             Directory.CreateDirectory("data/animations/" + name);
-            Animation tmpAnimation = new Animation();
+            Animation tmpAnimation = new Animation() { BasePath = name };
             File.WriteAllText("data/animations/" + name + "/data.xml", tmpAnimation.ToXml());
             RefreshItems();
         }

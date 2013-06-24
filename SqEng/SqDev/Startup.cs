@@ -31,5 +31,10 @@ namespace SqDev
         {
             (new AnimationSelector()).Show();
         }
+
+        private void btnAnimationGroupEditor_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

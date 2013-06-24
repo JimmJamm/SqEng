@@ -7,7 +7,7 @@ using System.Xml;
 
 namespace SqEng.Internal.Animation
 {
-    class AnimationGroup : GameObject
+    public class AnimationGroup : GameObject
     {
         private Animation currentAnimation;
         #region serialized
@@ -42,6 +42,24 @@ namespace SqEng.Internal.Animation
 
         #region override
 
+        public AnimationGroup(string path)
+            : base(path)
+        {
+
+        }
+
+        public AnimationGroup(XmlDocument x)
+            : base(x)
+        {
+
+        }
+
+        public AnimationGroup()
+            : base()
+        {
+
+        }
+
         public override string TypePath
         {
             get { return "animationgroups"; }
@@ -66,16 +84,18 @@ namespace SqEng.Internal.Animation
             }
         }
 
-        public override string ToXml()
+        public override string ToXml(bool full = false)
         {
             return 
                 "<animationgroup>" +
+                    (full ?
                     "<animations>" +
                         string.Join("", (from a in Animations.Values select a.ToXml())) +
                     "</animations>" +
                     "<currentanimation>" +
                         CurrentAnimation +
-                    "</currentanimation>" +
+                    "</currentanimation>" : "") +
+                    BaseXml +
                 "</animationgroup>";
         }
 

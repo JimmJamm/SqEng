@@ -31,7 +31,7 @@ namespace SqEng.Internal.InstanceBases
             
         }
 
-        public override string ToXml()
+        public override string ToXml(bool full = false)
         {
             throw new NotImplementedException();
         }

@@ -13,7 +13,7 @@ namespace SqEng.Internal
     {
         public abstract string TypePath { get; }
         public abstract Sprite @Sprite { get; }
-        public abstract string ToXml();
+        public abstract string ToXml(bool full = false);
         public abstract void LoadXmlDoc(XmlDocument x);
         public XmlDocument InitialXmlDoc;
         public string BasePath;

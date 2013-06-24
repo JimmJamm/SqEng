@@ -94,7 +94,7 @@ namespace SqEng.Internal.Animation
             get { return "frames"; }
         }
 
-        public override string ToXml()
+        public override string ToXml(bool full = false)
         {
             return
                 "<frame>" +

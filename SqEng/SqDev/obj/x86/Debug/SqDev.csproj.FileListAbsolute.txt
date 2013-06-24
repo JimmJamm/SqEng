@@ -21,3 +21,5 @@ C:\Users\user\Dropbox\git\SqEng\SqEng\SqDev\obj\x86\Debug\SqDev.FrameSelector.re
 C:\Users\user\dropbox\git\SqEng\SqEng\SqDev\obj\x86\Debug\SqDev.FrameEditor.resources
 C:\Users\user\dropbox\git\SqEng\SqEng\SqDev\obj\x86\Debug\SqDev.AnimationEditor.resources
 C:\Users\user\dropbox\git\SqEng\SqEng\SqDev\obj\x86\Debug\SqDev.AnimationSelector.resources
+C:\Users\user\Dropbox\git\SqEng\SqEng\SqDev\obj\x86\Debug\SqDev.AnimationGroupEditor.resources
+C:\Users\user\Dropbox\git\SqEng\SqEng\SqDev\obj\x86\Debug\SqDev.AnimationGroupSelector.resources

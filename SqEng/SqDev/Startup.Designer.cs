@@ -33,6 +33,7 @@
             this.btnCompile = new System.Windows.Forms.Button();
             this.btnFrameEditor = new System.Windows.Forms.Button();
             this.btnAnimationEdtior = new System.Windows.Forms.Button();
+            this.btnAnimationGroupEditor = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnRun
@@ -82,11 +83,22 @@
             this.btnAnimationEdtior.UseVisualStyleBackColor = true;
             this.btnAnimationEdtior.Click += new System.EventHandler(this.btnAnimationEdtior_Click);
             // 
+            // btnAnimationGroupEditor
+            // 
+            this.btnAnimationGroupEditor.Location = new System.Drawing.Point(145, 71);
+            this.btnAnimationGroupEditor.Name = "btnAnimationGroupEditor";
+            this.btnAnimationGroupEditor.Size = new System.Drawing.Size(127, 23);
+            this.btnAnimationGroupEditor.TabIndex = 5;
+            this.btnAnimationGroupEditor.Text = "AnimationGroup Editor";
+            this.btnAnimationGroupEditor.UseVisualStyleBackColor = true;
+            this.btnAnimationGroupEditor.Click += new System.EventHandler(this.btnAnimationGroupEditor_Click);
+            // 
             // Startup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.btnAnimationGroupEditor);
             this.Controls.Add(this.btnAnimationEdtior);
             this.Controls.Add(this.btnFrameEditor);
             this.Controls.Add(this.btnCompile);
@@ -106,6 +118,7 @@
         private System.Windows.Forms.Button btnCompile;
         private System.Windows.Forms.Button btnFrameEditor;
         private System.Windows.Forms.Button btnAnimationEdtior;
+        private System.Windows.Forms.Button btnAnimationGroupEditor;
     }
 }
 

@@ -96,16 +96,17 @@ namespace SqEng.Internal.Animation
             }
         }
 
-        public override string ToXml()
+        public override string ToXml(bool full = false)
         {
             return 
                 "<animation>" +
+                    (full ?
                     "<name>" + Name + "</name>" +
                     "<index>" + Index + "</index>" +
                     "<start>" + Start + "</start>" +
                     "<frames>" +
                         string.Join("", (from f in Frames select f.ToXml())) +
-                    "</frames>" +
+                    "</frames>" : "") +
                     BaseXml +
                 "</animation>";
         }

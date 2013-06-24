@@ -88,7 +88,11 @@ namespace SqDev
                 return;
             }
             string name = Microsoft.VisualBasic.Interaction.InputBox("Name:");
-            SqDev.DirectoryCopy("data/frames/" + lboFrames.SelectedItem.ToString(), "data/frames/" + name, true);
+            string baseName = lboFrames.SelectedItem.ToString();
+            Frame newFrame = new Frame(baseName) { BasePath = name };
+            //SqDev.DirectoryCopy("data/frames/" + lboFrames.SelectedItem.ToString(), "data/frames/" + name, true);
+            Directory.CreateDirectory("data/frames/" + newFrame.BasePath);
+            File.WriteAllText("data/frames/" + newFrame.BasePath + "/data.xml", newFrame.ToXml());
             RefreshItems();
         }
     }

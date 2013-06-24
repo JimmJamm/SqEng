@@ -71,6 +71,18 @@
     <Compile Include="AnimationEditor.Designer.cs">
       <DependentUpon>AnimationEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="AnimationGroupEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AnimationGroupEditor.Designer.cs">
+      <DependentUpon>AnimationGroupEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AnimationGroupSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AnimationGroupSelector.Designer.cs">
+      <DependentUpon>AnimationGroupSelector.cs</DependentUpon>
+    </Compile>
     <Compile Include="AnimationSelector.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +112,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AnimationEditor.resx">
       <DependentUpon>AnimationEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AnimationGroupEditor.resx">
+      <DependentUpon>AnimationGroupEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AnimationGroupSelector.resx">
+      <DependentUpon>AnimationGroupSelector.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AnimationSelector.resx">
       <DependentUpon>AnimationSelector.cs</DependentUpon>

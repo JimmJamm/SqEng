@@ -72,6 +72,7 @@
   <ItemGroup>
     <Compile Include="Internal\Animation\Animation.cs" />
     <Compile Include="Internal\Animation\AnimationGroup.cs" />
+    <Compile Include="Internal\Animation\Collision.cs" />
     <Compile Include="Internal\Animation\Frame.cs" />
     <Compile Include="Internal\Execution.cs" />
     <Compile Include="Internal\GameObject.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="Internal\Scripting\Statement.cs" />
     <Compile Include="Internal\Scripting\Variable.cs" />
     <Compile Include="Internal\Scripting\VarType.cs" />
+    <Compile Include="Internal\Tile.cs" />
     <Compile Include="SqEng.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
